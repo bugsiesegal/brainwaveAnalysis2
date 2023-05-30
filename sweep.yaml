@@ -1,0 +1,31 @@
+name: learning_rate_sweep
+program: train.py
+method: bayes
+metric:
+  name: val_loss
+  goal: minimize
+parameters:
+  learning_rate:
+    min: 1e-7
+    max: 1e-2
+    distribution: log_uniform_values
+  patience:
+    min: 1
+    max: 500
+    distribution: int_uniform
+  cooldown:
+    min: 1
+    max: 500
+    distribution: int_uniform
+  factor:
+    min: 0.1
+    max: 0.9
+    distribution: uniform
+  compression_size:
+    min: 10
+    max: 100
+    distribution: int_uniform
+  dropout:
+    min: 0
+    max: 1
+    distribution: uniform
